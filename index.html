@@ -17,9 +17,7 @@
 body{
   margin:0;
   font-family:Inter,system-ui,Arial;
-  /* background-image: url("bg.png"); */
   background: linear-gradient(rgba(255,255,255,.0), rgba(255,255,255,.0)), url("bg-3.png");
-  /* background:linear-gradient(180deg,var(--bg),#dff8ff 120%); */
   color:#042f34;
   padding:28px;
 }
@@ -49,6 +47,10 @@ section>*{margin-bottom:28px}
 
 /* quiz */
 .green-card{background:linear-gradient(180deg,#b3ffd1,#39e37c);border-radius:24px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.green-card .overlay-panda{
+  position:absolute;bottom:0;right:0;width:120px;pointer-events:none;
+  animation:floaty 3s ease-in-out infinite;
+}
 .quiz{background:#fff;border:1px solid #ccc3;border-radius:14px;padding:12px;margin-top:8px}
 .quiz-btn{font-family:"Press Start 2P",monospace;font-size:12px;background:#fff;border:2px solid #03261f;color:#03261f;cursor:pointer;transition:.2s;display:block;width:100%;margin:4px 0;padding:6px}
 .quiz-btn:hover{background:#c7ffe0}
@@ -59,9 +61,20 @@ section>*{margin-bottom:28px}
 #quizNext{margin-top:8px}
 
 /* game */
-.hero-yellow{background:linear-gradient(180deg,#ffecb3,#ffca28);border-radius:30px;padding:20px;box-shadow:var(--shadow);min-height:400px;display:flex;flex-direction:column;gap:16px}
+.hero-yellow{background:linear-gradient(180deg,#ffecb3,#ffca28);border-radius:30px;padding:20px;box-shadow:var(--shadow);min-height:400px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden}
+.hero-yellow .overlay-groot{
+  position:absolute;bottom:0;right:0;width:130px;pointer-events:none;
+  animation:floaty 4s ease-in-out infinite;
+}
 .game-header{display:flex;justify-content:space-between;align-items:center}
 .game-frame{flex:1;border-radius:14px;overflow:hidden;border:1px solid #0001;background:#fff;display:flex;align-items:center;justify-content:center;height:440px}
+
+/* floating animation */
+@keyframes floaty {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
 
 /* plant */
 .blue-card{background:linear-gradient(180deg,#c2f0ff,#5bc9ff);border-radius:24px;padding:18px;box-shadow:var(--shadow)}
@@ -111,7 +124,7 @@ footer{text-align:center;margin-top:20px;padding:10px}
   </div>
   <nav>
     <ul>
-      <li  style="color: white"><a href="#quiz">Quiz</a></li>
+      <li><a href="#quiz">Quiz</a></li>
       <li><a href="#game">Game</a></li>
       <li><a href="#plant">Plant</a></li>
       <li><a href="#leaderboard">Leaderboard</a></li>
@@ -135,6 +148,8 @@ footer{text-align:center;margin-top:20px;padding:10px}
         <button id="quizNext" class="pixel-btn">Next</button>
       </div>
       <div style="margin-top:6px;font-weight:900" class="pixel-title">Points: <span id="pts">0</span></div>
+      <!-- Panda overlay -->
+      <img src="panda.png" alt="Panda" class="overlay-panda">
     </div>
 
     <div class="map-card" id="impactMap">
@@ -164,6 +179,8 @@ footer{text-align:center;margin-top:20px;padding:10px}
         </div>
       </div>
       <div class="game-frame"><iframe id="gameIframe"></iframe></div>
+      <!-- Groot overlay -->
+      <img src="groot.png" alt="Groot" class="overlay-groot">
     </div>
 
     <div class="blue-card" id="plant">
