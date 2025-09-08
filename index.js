@@ -59,8 +59,39 @@ function prev(id,prevId){
 prev('before','prevBefore'); prev('after','prevAfter');
 
 /* Verify */
-document.getElementById('runVerify').onclick=()=>{
-  alert("Plant verification complete ✅ (demo).");
+document.getElementById('runVerify').onclick=async () => {
+  const beforeFile = document.getElementById('before').files[0];
+  const afterFile = document.getElementById('after').files[0];
+  const resultDiv = document.getElementById('verifyResult');
+
+  if (!beforeFile || !afterFile) {
+    alert("Please select both images.");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("image1", beforeFile);
+  formData.append("image2", afterFile);
+  formData.append("model", "2"); // Using MobileNet as default
+
+  resultDiv.textContent = "Verifying...";
+  
+  try {
+    const response = await fetch("https://planted-greenxp.onrender.com/check_similarity/", {
+      method: "POST",
+      body: formData
+    });
+
+    if (!response.ok) {
+      throw new Error("Verification failed.");
+    }
+
+    const data = await response.json();
+    resultDiv.textContent = `Similarity: ${data.similarity_percentage}%`;
+  } catch (error) {
+    resultDiv.textContent = "Error: " + error.message;
+    console.error(error);
+  }
 };
 
 /* Map Zoom */
