@@ -76,12 +76,42 @@ section>*{margin-bottom:28px}
 /* plant */
 .blue-card{background:linear-gradient(180deg,#c2f0ff,#5bc9ff);border-radius:24px;padding:18px;box-shadow:var(--shadow)}
 .upload-grid{display:flex;gap:12px;flex-wrap:wrap}
-.upload-box{flex:1;min-width:160px;background:#fff9;padding:10px;border-radius:12px;border:1px solid #0001;display:flex;flex-direction:column;align-items:center}
-.upload-box img{max-width:140px}
+.upload-box{flex:1;
+  margin-top: 30px;
+  min-width:160px;
+  background:#fff9;
+  padding:30px;
+  border-radius:12px;
+  border:1px solid #0001;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  overflow:hidden;
+  position:relative;
+  text-align:center;
+  box-shadow:0 4px 12px #0002;
+  transition:.3s
+}
+.upload-box img{
+  max-width:140px
+}
+.upload-box input{padding-left:50px}
+.pixel-btn{
+  margin-top:12px;
+  width:100%;
+}
 
 /* impact dashboard */
 .impact-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
-.impact-box{background:#fff;border-radius:12px;padding:12px;text-align:center;font-weight:800;box-shadow:0 4px 12px #0002;position:relative}
+.impact-box{background:#fff;
+  border-radius:12px;
+  padding:12px;
+  text-align:center;
+  font-weight:800;
+  box-shadow:0 4px 12px #0002;
+  position:relative
+
+}
 .impact-box span{display:block;font-size:22px;color:#0f915b;margin-top:6px;transition:.3s}
 
 /* badges */
