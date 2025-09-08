@@ -100,7 +100,11 @@ section>*{margin-bottom:28px}
   margin-top:12px;
   width:100%;
 }
-
+.btns{
+  display: flex;
+  flex-direction: rows;
+  gap: 30px;
+} 
 /* impact dashboard */
 .impact-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
 .impact-box{background:#fff;
